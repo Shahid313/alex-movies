@@ -1,0 +1,14 @@
+
+
+nav(style="background-color:black;display:flex;flex-direction:row;padding:10px;justify-content:space-between;")
+    a(href="/") Home
+    br
+    if user
+        a(href="/book/add") Add book
+        br
+        a(href="/users/logout") Logout 
+    else
+        a(href="/users/register") Register 
+        br
+        a(href="/users/login") Login 
+    br

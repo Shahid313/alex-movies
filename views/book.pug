@@ -1,0 +1,33 @@
+extends layout 
+block content 
+    div(style="background-color:skyblue;padding:20px;border:1px solid skyblue;border-radius:5px")
+        h1= book.title 
+        h5 Written by #{book.author}
+        h5 Posted by: #{posted_by}
+        p Rating: #{book.rating}
+        p Pages: #{book.pages}
+        p isbn: #{book.isbn}
+       
+        label Genres:
+    
+        ul
+        each genre in book.genres
+            li #{genre}
+
+        hr
+
+
+        h2="Book Info"
+        p Publisher: #{book_info.volumeInfo.publisher}
+        p Published Date : #{book_info.volumeInfo.publishedDate}
+        p description : 
+        p #{book_info.volumeInfo.description}
+        //- //- If user logged in
+        //- if user
+        //-     //- Hide edit and delete unless book was posted by current user
+        //-     if user._id == book.posted_by
+        //-         //- Link to edit book
+        a.btn.btn-default(href="/book/edit/" + book._id) Edit Book
+        br
+        //- Link to delete book
+        a.btn.delete-book(href="#", data-id=book._id) Delete Book

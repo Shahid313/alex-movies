@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    div(style="padding:20px;")
+
+        if user
+            h3 Welcome back #{user.name}!
+        h1 Bookstore
+    //- Loop through all books
+    div(style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:space-between;")
+        each book in books 
+            //- Display title, author, pages, rating
+            div(style="background-color:skyblue;padding:20px;border:1px solid skyblue;border-radius:5px;width:30%;margin-left:10px;")
+
+                label Title:
+                //- Link to book with id
+                a(href="/book/" + book._id) #{book.title}
+                p Author: #{book.author}
+                p Pages: #{book.pages}
+                p Rating: #{book.rating}
+                p Genres:
+                ul
+                //- Loop through genres and print as list
+                each genre in book.genres
+                    li #{genre}
+
+                br
+                br
